@@ -27,17 +27,8 @@
             letter-spacing: 8px;
             text-shadow: 0 0 10px #8b0000, 0 0 20px #8b0000, 0 0 30px #8b0000, 3px 3px 0 #000;
         }
-        .tagline {
-            color: #8b0000;
-            font-size: 1.5rem;
-            margin-top: 1rem;
-            text-transform: uppercase;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
+        .tagline { color: #8b0000; font-size: 1.5rem; margin-top: 1rem; text-transform: uppercase; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1rem; }
         .products-section {
             background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);
             border-radius: 20px;
@@ -109,13 +100,7 @@
         .in-stock { background: linear-gradient(135deg, #8b0000 0%, #6a0000 100%); color: #fff; }
         .low-stock { background: linear-gradient(135deg, #ff6600 0%, #cc5200 100%); color: #fff; }
         .out-stock { background: #333; color: #888; }
-        footer {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: #fff;
-            margin-top: 3rem;
-            border-top: 3px solid #8b0000;
-        }
+        footer { text-align: center; padding: 3rem 1rem; color: #fff; margin-top: 3rem; border-top: 3px solid #8b0000; }
     </style>
 </head>
 <body>
@@ -137,61 +122,17 @@
 
     <script>
         const productos = [
-            {
-              nombre: "AN ABE ENERGY DRINK 11.2 OZ 12PK BLUE LAGOON",
-              precio: 524, stock: 1,
-              img: "https://ansupps.com/products/abe-energy-drink-12pk"  /* imagen genérica de ABE RTD pack */ 
-            },
-            {
-              nombre: "AN ABE ULTIMATE PRE-WORK 30 SERV RED HAWAIIAN",
-              precio: 428, stock: 1,
-              img: "https://ansupps.com/products/abe-energy-drink-12pk"  /* reutilizo imagen ABE si no encontré específica */
-            },
-            {
-              nombre: "MOTHER BUCKER 20 SERV MUSCLEHEAD MANGO",
-              precio: 587, stock: 1,
-              img: "https://tse4.mm.bing.net/th/id/OIP.e1dp9ACeH_4xEcC2nhdmwgHaHa?pid=Api"
-            },
-            {
-              nombre: "LEGEND ALL OUT PWO 20 SERV WARHEADS GREEN APPLE",
-              precio: 688, stock: 1,
-              img: "https://tse4.mm.bing.net/th/id/OIP.0eid7CLM11nGDF4Lw1X-qAHaHY?pid=Api"
-            },
-            {
-              nombre: "SUPER PUMP AGRESSION 20/40 SERV JERSEY MOBSTER ITALIAN ICE",
-              precio: 425, stock: 1,
-              img: "https://tse3.mm.bing.net/th/id/OIP.ObZnocSwQgkeQbTiodgQkQHaHU?pid=Api"
-            },
-            {
-              nombre: "PANDAMIC EXTREME PWO 25 SERV RASPBERRY LEMONADE",
-              precio: 577, stock: 1,
-              img: "https://tse4.mm.bing.net/th/id/OIP.DBau6MQJXjXsY7wPasyR5wHaHa?pid=Api"
-            },
-            {
-              nombre: "PANDAMUS PWO LEVEL III 40 SERV GREEN APPLE BUBBLE GUM",
-              precio: 676, stock: 1,
-              img: "https://tse4.mm.bing.net/th/id/OIP.e1dp9ACeH_4xEcC2nhdmwgHaHa?pid=Api"
-            },
-            {
-              nombre: "LOADED PWO RTD 12 PACK RING POP CHERRY",
-              precio: 714, stock: 1,
-              img: "https://tse4.mm.bing.net/th/id/OIP.0eid7CLM11nGDF4Lw1X-qAHaHY?pid=Api"
-            },
-            {
-              nombre: "LOADED PRE 30 SERV JELL-O ISLAND PINEAPPLE",
-              precio: 565, stock: 1,
-              img: "https://ansupps.com/products/abe-energy-drink-12pk"
-            },
-            {
-              nombre: "TOTAL WAR RTD 12 OZ 12 PK ORANGE CRUSH",
-              precio: 626, stock: 1,
-              img: "https://tse4.mm.bing.net/th/id/OIP.DBau6MQJXjXsY7wPasyR5wHaHa?pid=Api"
-            },
-            {
-              nombre: "BUCKED UP ENERGY DRINKS 16OZ 12PK GRAPE GAINZ",
-              precio: 449, stock: 1,
-              img: "https://1stnutritions.com/products/bucked-up-energy-drink-grape-gainz-12-drinks"
-            }
+            { nombre: "AN ABE ENERGY DRINK 11.2 OZ 12PK BLUE LAGOON", precio: 524, stock: 1, img: "https://cdn.shopify.com/s/files/1/0051/6810/3491/files/abe-energy-performance-rtd-energy-drinks-blue-lagoon-6-pack-31146887905347.jpg?v=1692747949" },
+            { nombre: "AN ABE ULTIMATE PRE-WORK 30 SERV RED HAWAIIAN", precio: 428, stock: 1, img: "https://size.siteimgs.com/fit/450x450/10017/item/abe-ultimate-pre-workout_1679343310-0.jpg" },
+            { nombre: "MOTHER BUCKER 20 SERV MUSCLEHEAD MANGO", precio: 587, stock: 1, img: "https://siteimgs.com/10017/item/7971-mb-muscleheadmango-2_1684423086-0.jpg" },
+            { nombre: "LEGEND ALL OUT PWO 20 SERV WARHEADS GREEN APPLE", precio: 688, stock: 1, img: "https://tse3.mm.bing.net/th/id/OIP.YKu4IJynievrLF61BDf4cwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
+            { nombre: "SUPER PUMP AGRESSION 20/40 SERV JERSEY MOBSTER ITALIAN ICE", precio: 425, stock: 1, img: "https://www.netnutri.com/media/catalog/product/cache/17/image/650x/d9c70597da8a9cb2926ef4bca3f81833/j/e/jersey_mobster_italian_ice.jpg" },
+            { nombre: "PANDAMIC EXTREME PWO 25 SERV RASPBERRY LEMONADE", precio: 577, stock: 1, img: "https://tse4.mm.bing.net/th/id/OIP.U6MZRXsG_RieqZRekNiqBwHaJs?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
+            { nombre: "PANDAMUS PWO LEVEL III 40 SERV GREEN APPLE BUBBLE GUM", precio: 676, stock: 1, img: "https://th.bing.com/th/id/R.a4517399e159648093c0a2ac5183b86c?rik=Z96cNFxFRytr5g&riu=http%3a%2f%2fkongfitnessmx.com%2fcdn%2fshop%2ffiles%2f8EA5544D-EEC5-4AB4-B108-4AEEAC2866CE.png%3fv%3d1741236949&ehk=DsPra%2bq7X1fGBbFJssB%2f6IEk24%2bVz97ujrlOBhcLSpM%3d&risl=&pid=ImgRaw&r=0" },
+            { nombre: "LOADED PWO RTD 12 PACK RING POP CHERRY", precio: 714, stock: 1, img: "https://tse2.mm.bing.net/th/id/OIP.C2CFQQ0FJsNmKV4dTqAWPwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
+            { nombre: "LOADED PRE 30 SERV JELL-O ISLAND PINEAPPLE", precio: 565, stock: 1, img: "https://www.stack3d.com/wp-content/uploads/2024/09/ryse-jell-o-lemon-lime-and-pineapple-loaded-pre.jpg" },
+            { nombre: "TOTAL WAR RTD 12 OZ 12 PK ORANGE CRUSH", precio: 626, stock: 1, img: "https://www.northlandservice.com/wp-content/uploads/2024/08/TOTAL-WAR-ORANGE-CRUSH-PRE-WORK-OUT-12-OZ_12PACK.png" },
+            { nombre: "BUCKED UP ENERGY DRINKS 16OZ 12PK GRAPE GAINZ", precio: 449, stock: 1, img: "https://i5.walmartimages.com/asr/84c602d4-35f6-4c29-b36b-144070caa588.83780bc61cbb8637ba988c2702cd317e.jpeg" }
         ];
 
         function getStockStatus(stock) {
