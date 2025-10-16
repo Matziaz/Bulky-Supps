@@ -5,266 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bulky Supps - Suplementos Mr. Olympia Style</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Impact', 'Arial Black', sans-serif;
             background: #0a0a0a;
             color: #fff;
             min-height: 100vh;
-            background-image: 
-                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 0, 0, 0.03) 10px, rgba(255, 0, 0, 0.03) 20px);
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(139,0,0,0.03) 10px, rgba(139,0,0,0.03) 20px);
         }
-
         header {
             background: linear-gradient(135deg, #1a0000 0%, #000 50%, #1a0000 100%);
             padding: 3rem 1rem;
             text-align: center;
-            box-shadow: 0 5px 30px rgba(255, 0, 0, 0.5);
-            border-bottom: 5px solid #ff0000;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(139,0,0,0.5);
+            border-bottom: 5px solid #6b0000;
         }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.1), transparent);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .raccoon-emoji {
-            font-size: 5rem;
-            filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
         h1 {
             color: #fff;
             font-size: 4rem;
             text-transform: uppercase;
             letter-spacing: 8px;
-            text-shadow: 
-                0 0 10px #ff0000,
-                0 0 20px #ff0000,
-                0 0 30px #ff0000,
-                3px 3px 0 #000;
-            font-weight: 900;
+            text-shadow: 0 0 10px #8b0000, 0 0 20px #8b0000, 0 0 30px #8b0000, 3px 3px 0 #000;
         }
-
         .tagline {
-            color: #ff0000;
+            color: #8b0000;
             font-size: 1.5rem;
             margin-top: 1rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px #000;
         }
-
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem 1rem;
         }
-
-        .social-section {
-            background: linear-gradient(135deg, #1a0000 0%, #000 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(255, 0, 0, 0.3);
-            border: 2px solid #ff0000;
-        }
-
-        .social-section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #ff0000;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 0 10px #ff0000;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .social-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 1.2rem 2.5rem;
-            background: #000;
-            border: 3px solid #ff0000;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: #ff0000;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s, height 0.5s;
-            z-index: 0;
-        }
-
-        .social-btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.6);
-            border-color: #fff;
-        }
-
-        .social-btn span {
-            position: relative;
-            z-index: 1;
-        }
-
         .products-section {
             background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);
             border-radius: 20px;
             padding: 3rem 2rem;
-            margin-top: 2rem;
-            box-shadow: 0 10px 50px rgba(255, 0, 0, 0.4);
-            border: 3px solid #ff0000;
+            box-shadow: 0 10px 50px rgba(139,0,0,0.4);
+            border: 3px solid #8b0000;
         }
-
         .products-section h2 {
             text-align: center;
             font-size: 3rem;
             margin-bottom: 3rem;
-            color: #ff0000;
+            color: #8b0000;
             text-transform: uppercase;
             letter-spacing: 6px;
-            text-shadow: 
-                0 0 10px #ff0000,
-                0 0 20px #ff0000,
-                3px 3px 0 #000;
+            text-shadow: 0 0 10px #8b0000, 0 0 20px #8b0000, 3px 3px 0 #000;
         }
-
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
         .product-card {
             background: linear-gradient(135deg, #1a0000 0%, #000 100%);
             border-radius: 15px;
             padding: 2rem;
-            box-shadow: 0 5px 25px rgba(255, 0, 0, 0.2);
+            border: 2px solid #8b0000;
+            box-shadow: 0 5px 25px rgba(139,0,0,0.2);
             transition: all 0.4s ease;
-            border: 2px solid #ff0000;
-            position: relative;
-            overflow: hidden;
         }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
-            transform: rotate(0deg);
-            transition: transform 0.6s;
-        }
-
-        .product-card:hover::before {
-            transform: rotate(180deg);
-        }
-
         .product-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139,0,0,0.5);
             border-color: #fff;
         }
-
-        .product-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .product-icon {
-            font-size: 4rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
-        }
-
         .product-name {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             font-weight: 900;
-            margin-bottom: 1rem;
             color: #fff;
             text-align: center;
+            margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 0 #ff0000;
         }
-
         .product-description {
             color: #ccc;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             text-align: center;
-            font-size: 1rem;
-            font-family: Arial, sans-serif;
-            line-height: 1.5;
         }
-
         .product-stock {
             display: flex;
             justify-content: space-between;
@@ -273,113 +93,38 @@
             background: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
             margin-top: 1rem;
-            border: 1px solid rgba(255, 0, 0, 0.3);
+            border: 1px solid rgba(139,0,0,0.3);
         }
-
-        .stock-label {
-            font-weight: bold;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .stock-number {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: #ff0000;
-            text-shadow: 0 0 10px #ff0000;
-        }
-
+        .stock-label { font-weight: bold; color: #fff; }
+        .stock-number { font-size: 1.2rem; font-weight: 900; color: #8b0000; }
         .stock-status {
             display: block;
             text-align: center;
             padding: 0.6rem 1rem;
             border-radius: 25px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: bold;
             margin-top: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
-
-        .in-stock { 
-            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-            color: #fff;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
-        }
-        
-        .low-stock { 
-            background: linear-gradient(135deg, #ff6600 0%, #cc5200 100%);
-            color: #fff;
-            box-shadow: 0 0 15px rgba(255, 102, 0, 0.5);
-        }
-        
-        .out-stock { 
-            background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
-            color: #999;
-            border: 2px solid #333;
-        }
-
+        .in-stock { background: linear-gradient(135deg, #8b0000 0%, #6a0000 100%); color: #fff; }
+        .low-stock { background: linear-gradient(135deg, #ff6600 0%, #cc5200 100%); color: #fff; }
+        .out-stock { background: #333; color: #888; }
         footer {
             text-align: center;
             padding: 3rem 1rem;
             color: #fff;
             margin-top: 3rem;
-            border-top: 3px solid #ff0000;
-            background: linear-gradient(135deg, #000 0%, #1a0000 100%);
-        }
-
-        footer p {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 4px #000;
-        }
-
-        footer .copyright {
-            color: #ff0000;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; letter-spacing: 4px; }
-            .raccoon-emoji { font-size: 3rem; }
-            .tagline { font-size: 1rem; }
-            .social-links { gap: 1rem; }
-            .social-btn { padding: 1rem 1.5rem; font-size: 1rem; }
-            .products-section h2 { font-size: 2rem; }
+            border-top: 3px solid #8b0000;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <span class="raccoon-emoji">🦝</span>
-            <h1>BULKY SUPPS</h1>
-            <span class="raccoon-emoji">🦝</span>
-        </div>
+        <h1>BULKY SUPPS</h1>
         <p class="tagline">💪 DOMINA EL HIERRO 💪</p>
     </header>
 
     <div class="container">
-        <div class="social-section">
-            <h2>🔥 Contáctanos 🔥</h2>
-            <div class="social-links">
-                <a href="https://instagram.com/bulkysupps" target="_blank" class="social-btn">
-                    <span>📷</span>
-                    <span>Instagram</span>
-                </a>
-                <a href="https://wa.me/5215512345678" target="_blank" class="social-btn">
-                    <span>💬</span>
-                    <span>WhatsApp</span>
-                </a>
-                <a href="https://t.me/bulkysupps" target="_blank" class="social-btn">
-                    <span>✈️</span>
-                    <span>Telegram</span>
-                </a>
-            </div>
-        </div>
-
         <div class="products-section">
             <h2>🦝 ARSENAL DE CAMPEONES 🦝</h2>
             <div class="products-grid" id="productsGrid"></div>
@@ -387,95 +132,96 @@
     </div>
 
     <footer>
-        <p class="copyright">🦝 BULKY SUPPS © 2025 🦝</p>
-        <p style="margin-top: 1rem; color: #ff0000;">💪 NO PAIN, NO GAIN 💪</p>
+        <p>🦝 BULKY SUPPS © 2025 🦝</p>
     </footer>
 
     <script>
-        // Base de datos de productos (modifica aquí para actualizar stock)
         const productos = [
             {
-                nombre: "Proteína Whey",
-                icono: "🥛",
-                descripcion: "Proteína de suero de alta calidad para máximo crecimiento muscular",
-                stock: 15
+              nombre: "AN ABE ENERGY DRINK 11.2 OZ 12PK BLUE LAGOON",
+              precio: 524, stock: 1,
+              img: "https://ansupps.com/products/abe-energy-drink-12pk"  /* imagen genérica de ABE RTD pack */ 
             },
             {
-                nombre: "Creatina Monohidrato",
-                icono: "⚡",
-                descripcion: "Aumenta tu fuerza y rendimiento en cada entrenamiento",
-                stock: 23
+              nombre: "AN ABE ULTIMATE PRE-WORK 30 SERV RED HAWAIIAN",
+              precio: 428, stock: 1,
+              img: "https://ansupps.com/products/abe-energy-drink-12pk"  /* reutilizo imagen ABE si no encontré específica */
             },
             {
-                nombre: "Pre-Workout",
-                icono: "🔥",
-                descripcion: "Energía explosiva para entrenamientos intensos",
-                stock: 8
+              nombre: "MOTHER BUCKER 20 SERV MUSCLEHEAD MANGO",
+              precio: 587, stock: 1,
+              img: "https://tse4.mm.bing.net/th/id/OIP.e1dp9ACeH_4xEcC2nhdmwgHaHa?pid=Api"
             },
             {
-                nombre: "BCAA's",
-                icono: "💊",
-                descripcion: "Aminoácidos esenciales para recuperación muscular",
-                stock: 18
+              nombre: "LEGEND ALL OUT PWO 20 SERV WARHEADS GREEN APPLE",
+              precio: 688, stock: 1,
+              img: "https://tse4.mm.bing.net/th/id/OIP.0eid7CLM11nGDF4Lw1X-qAHaHY?pid=Api"
             },
             {
-                nombre: "Multivitamínico",
-                icono: "🌟",
-                descripcion: "Complejo vitamínico completo para tu salud",
-                stock: 0
+              nombre: "SUPER PUMP AGRESSION 20/40 SERV JERSEY MOBSTER ITALIAN ICE",
+              precio: 425, stock: 1,
+              img: "https://tse3.mm.bing.net/th/id/OIP.ObZnocSwQgkeQbTiodgQkQHaHU?pid=Api"
             },
             {
-                nombre: "Omega 3",
-                icono: "🐟",
-                descripcion: "Ácidos grasos esenciales para tu bienestar",
-                stock: 12
+              nombre: "PANDAMIC EXTREME PWO 25 SERV RASPBERRY LEMONADE",
+              precio: 577, stock: 1,
+              img: "https://tse4.mm.bing.net/th/id/OIP.DBau6MQJXjXsY7wPasyR5wHaHa?pid=Api"
             },
             {
-                nombre: "Glutamina",
-                icono: "💪",
-                descripcion: "Mejora la recuperación y fortalece el sistema inmune",
-                stock: 20
+              nombre: "PANDAMUS PWO LEVEL III 40 SERV GREEN APPLE BUBBLE GUM",
+              precio: 676, stock: 1,
+              img: "https://tse4.mm.bing.net/th/id/OIP.e1dp9ACeH_4xEcC2nhdmwgHaHa?pid=Api"
             },
             {
-                nombre: "Mass Gainer",
-                icono: "📈",
-                descripcion: "Alto en calorías para ganar masa muscular rápidamente",
-                stock: 5
+              nombre: "LOADED PWO RTD 12 PACK RING POP CHERRY",
+              precio: 714, stock: 1,
+              img: "https://tse4.mm.bing.net/th/id/OIP.0eid7CLM11nGDF4Lw1X-qAHaHY?pid=Api"
+            },
+            {
+              nombre: "LOADED PRE 30 SERV JELL-O ISLAND PINEAPPLE",
+              precio: 565, stock: 1,
+              img: "https://ansupps.com/products/abe-energy-drink-12pk"
+            },
+            {
+              nombre: "TOTAL WAR RTD 12 OZ 12 PK ORANGE CRUSH",
+              precio: 626, stock: 1,
+              img: "https://tse4.mm.bing.net/th/id/OIP.DBau6MQJXjXsY7wPasyR5wHaHa?pid=Api"
+            },
+            {
+              nombre: "BUCKED UP ENERGY DRINKS 16OZ 12PK GRAPE GAINZ",
+              precio: 449, stock: 1,
+              img: "https://1stnutritions.com/products/bucked-up-energy-drink-grape-gainz-12-drinks"
             }
         ];
 
         function getStockStatus(stock) {
             if (stock === 0) return { class: 'out-stock', text: '⛔ Agotado' };
-            if (stock < 10) return { class: 'low-stock', text: '⚠️ Últimas Unidades' };
+            if (stock < 3) return { class: 'low-stock', text: '⚠️ Últimas Unidades' };
             return { class: 'in-stock', text: '✓ Disponible' };
         }
 
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
-            
-            productos.forEach(producto => {
-                const status = getStockStatus(producto.stock);
-                
+            productos.forEach(p => {
+                const status = getStockStatus(p.stock);
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
                     <div class="product-content">
-                        <div class="product-icon">${producto.icono}</div>
-                        <div class="product-name">${producto.nombre}</div>
-                        <div class="product-description">${producto.descripcion}</div>
+                        <img src="${p.img}" alt="${p.nombre}" style="width:100%; border-radius:10px; margin-bottom:1rem;">
+                        <div class="product-name">${p.nombre}</div>
+                        <div class="product-description">Suplemento de alto rendimiento, sabor intenso y energía brutal 💪</div>
                         <div class="product-stock">
-                            <span class="stock-label">Stock:</span>
-                            <span class="stock-number">${producto.stock} unidades</span>
+                            <span class="stock-label">Precio:</span>
+                            <span class="stock-number">$${p.precio} MXN</span>
                         </div>
                         <span class="stock-status ${status.class}">${status.text}</span>
                     </div>
                 `;
-                
                 grid.appendChild(card);
             });
         }
 
-        // Renderizar productos al cargar la página
         renderProducts();
     </script>
 </body>
