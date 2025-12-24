@@ -5,306 +5,273 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bulky Supps - Suplementos y Energía Real</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Arial Black', 'Impact', sans-serif;
-      background: #0a0a0a;
-      color: #fff;
-      min-height: 100vh;
-      background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(139,0,0,0.03) 10px, rgba(139,0,0,0.03) 20px);
+    :root{
+      --bg:#070707;
+      --accent:#b22222;
+      --accent-2:#8b0000;
+      --muted:#bfbfbf;
+      --card:#0f0f0f;
+      --glass: rgba(255,255,255,0.05);
+      --radius:14px;
+      --max-width:1200px;
+      --gap:1.25rem;
+      --brand-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
-    header {
-      background: linear-gradient(135deg, #1a0000 0%, #000 50%, #1a0000 100%);
-      padding: 3rem 1rem;
-      text-align: center;
-      box-shadow: 0 5px 30px rgba(139,0,0,0.5);
-      border-bottom: 4px solid #6b0000;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--brand-font);
+      background:linear-gradient(180deg,var(--bg),#0a0a0a 60%);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:3rem;
     }
-    h1 {
-      color: #fff;
-      font-size: 3rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow: 0 0 15px #8b0000;
+    .site{max-width:var(--max-width);margin:0 auto;padding:1.25rem}
+
+    header.site-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+    .brand{display:flex;align-items:center;gap:.75rem}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;box-shadow:0 6px 18px rgba(139,0,0,0.35)}
+    .brand h1{font-size:1.25rem;letter-spacing:1px;margin:0}
+    .tagline{color:var(--muted);font-size:.88rem}
+
+    nav.actions{display:flex;gap: .5rem;align-items:center}
+    .btn{background:var(--accent);color:#fff;padding:.6rem .9rem;border-radius:10px;border:none;cursor:pointer;font-weight:700;transition:.2s ease}
+    .btn:hover{opacity:.85;transform:translateY(-1px)}
+    .btn.ghost{background:transparent;border:1px solid var(--glass)}
+
+    main{margin-top:1rem}
+    .hero{background:linear-gradient(90deg, rgba(139,0,0,0.06), transparent);padding:1.25rem;border-radius:var(--radius);display:flex;gap:1rem;align-items:center}
+    .hero-inner{flex:1}
+    .hero h2{font-size:1.6rem;margin:0 0 .25rem}
+    .hero p{color:var(--muted);margin:0 0 .5rem}
+
+    /* UX: Estado activo en botones de categoría */
+    .filter-active{
+      outline:2px solid var(--accent);
+      background:rgba(178,34,34,0.25);
+      box-shadow:0 0 20px rgba(178,34,34,0.3);
     }
-    .tagline {
-      color: #b22222;
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-      font-weight: 600;
-      letter-spacing: 1px;
+
+    .controls{display:flex;gap:.75rem;align-items:center;margin:1rem 0;flex-wrap:wrap}
+    .select, .search{background:var(--card);border:1px solid var(--glass);padding:.7rem .9rem;border-radius:10px;color:#fff}
+    .search{flex:1}
+    .select{color:var(--muted)}
+
+    section.products{margin-top: .75rem}
+    .section-title{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .section-title h3{margin:0;color:var(--accent);letter-spacing:0.6px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--gap);margin-top:1rem}
+    .card{
+      background:linear-gradient(180deg,var(--card),#090909);
+      padding:1rem;
+      border-radius:12px;
+      border:1px solid rgba(139,0,0,0.08);
+      box-shadow:0 6px 20px rgba(0,0,0,0.5);
+      display:flex;
+      flex-direction:column;
+      gap:.6rem;
+      transition:transform .18s ease,box-shadow .18s ease;
+      opacity:0;
+      transform:translateY(10px);
+      animation:fadeIn .3s forwards;
     }
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
+    
+    @keyframes fadeIn {
+      to {opacity:1; transform:translateY(0);}
     }
-    .products-section {
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);
-      border-radius: 20px;
-      padding: 3rem 2rem;
-      box-shadow: 0 10px 40px rgba(139,0,0,0.3);
-      border: 2px solid #8b0000;
-      margin-bottom: 3rem;
+
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(139,0,0,0.15)}
+    .thumb{width:100%;height:140px;border-radius:8px;object-fit:cover;background:#111}
+    .meta{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+    .title{font-weight:800;font-size:0.95rem}
+    .price{color:var(--accent);font-weight:800}
+    .badges{display:flex;gap:.4rem;flex-wrap:wrap}
+    .badge{font-size:.72rem;padding:.22rem .45rem;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted);border:1px solid rgba(255,255,255,0.03)}
+    .desc{color:var(--muted);font-size:.86rem;min-height:3.2rem}
+
+    /* Empty state */
+    .empty{
+      text-align:center;
+      padding:2rem;
+      background:rgba(255,255,255,0.03);
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.08);
+      font-size:1rem;
+      color:var(--muted);
+      grid-column:1/-1;
     }
-    .products-section h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
-      color: #ff3b3b;
-      text-shadow: 0 0 10px #5a0000;
-      letter-spacing: 1px;
-      font-weight: 800;
-    }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .product-card {
-      background: linear-gradient(135deg, #1a0000 0%, #000 100%);
-      border-radius: 15px;
-      padding: 2rem;
-      border: 2px solid #8b0000;
-      box-shadow: 0 5px 25px rgba(139,0,0,0.2);
-      transition: all 0.3s ease;
-    }
-    .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 35px rgba(139,0,0,0.4);
-      border-color: #fff;
-    }
-    .product-name {
-      font-size: 1.2rem;
-      font-weight: 900;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-    }
-    .product-type {
-      display: inline-block;
-      background: #b22222;
-      color: #fff;
-      font-size: 0.8rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 20px;
-      text-align: center;
-      margin: 0 auto 0.3rem;
-      display: block;
-      width: fit-content;
-    }
-    .product-level {
-      display: inline-block;
-      background: #222;
-      color: #ff3b3b;
-      font-size: 0.8rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 20px;
-      text-align: center;
-      margin: 0 auto 0.8rem;
-      display: block;
-      width: fit-content;
-      border: 1px solid #8b0000;
-    }
-    .product-description {
-      color: #bbb;
-      margin-bottom: 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-      min-height: 50px;
-    }
-    .product-stock {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
-      margin-top: 1rem;
-      border: 1px solid rgba(139,0,0,0.3);
-    }
-    .stock-label { font-weight: bold; color: #fff; font-size: 0.95rem; }
-    .stock-number { font-size: 1.1rem; font-weight: 900; color: #ff3b3b; }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: #ccc;
-      margin-top: 2rem;
-      border-top: 2px solid #8b0000;
-      font-size: 0.9rem;
+
+    footer.site-footer{margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(139,0,0,0.08);text-align:center;color:var(--muted)}
+
+    @media (max-width:600px){
+      .hero{flex-direction:column;align-items:flex-start}
+      .thumb{height:120px}
+      .brand h1{font-size:1rem}
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Bulky Supps</h1>
-    <p class="tagline">Suplementos reales para atletas reales 💪</p>
-  </header>
+  <div class="site">
+    <header class="site-header" role="banner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">BS</div>
+        <div>
+          <h1>Bulky Supps</h1>
+          <div class="tagline">Energía para entrenar como bestia</div>
+        </div>
+      </div>
+      <nav class="actions" aria-label="Acciones del sitio">
+        <button class="btn">Explorar todo</button>
+        <button class="btn ghost" id="contactBtn">Escríbenos</button>
+      </nav>
+    </header>
 
-  <div class="container">
-    <div class="products-section" id="bebidas">
-      <h2>Bebidas energéticas</h2>
-      <div class="products-grid" id="bebidasGrid"></div>
-    </div>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <h2 id="hero-title">Energía. Fuerza. Actitud.</h2>
+          <p>Todo lo que necesitas para entrenar duro: pre-entrenos, bebidas energéticas y proteínas que de verdad funcionan.</p>
+          <div style="margin-top:.6rem;display:flex;gap:.5rem;flex-wrap:wrap">
+            <button class="btn cat-btn" data-cat="bebidas">Bebidas</button>
+            <button class="btn cat-btn" data-cat="preentrenos">Pre-entrenos</button>
+            <button class="btn cat-btn" data-cat="proteinas">Proteínas</button>
+          </div>
+        </div>
+        <div style="min-width:220px;display:flex;align-items:center;justify-content:center">
+          <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=800&auto=format&fit=crop" alt="Atleta levantando pesas" style="width:220px;border-radius:12px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,0.6)">
+        </div>
+      </section>
 
-    <div class="products-section" id="preentrenos">
-      <h2>Pre-entrenos</h2>
-      <div class="products-grid" id="preentrenosGrid"></div>
-    </div>
+      <div class="controls" role="region" aria-label="Filtros de productos">
+        <input class="search" id="search" placeholder="Busca tu suplemento ideal..." aria-label="Buscar productos">
+        <select id="filterLevel" class="select" aria-label="Filtrar por nivel">
+          <option value="">Todos los niveles</option>
+          <option value="Principiante">Principiante</option>
+          <option value="Intermedio">Intermedio</option>
+          <option value="Avanzado">Avanzado</option>
+        </select>
+        <select id="filterTipo" class="select" aria-label="Filtrar por tipo">
+          <option value="">Todos los tipos</option>
+        </select>
+      </div>
 
-    <div class="products-section" id="proteinas">
-      <h2>Proteínas y recuperación</h2>
-      <div class="products-grid" id="proteinasGrid"></div>
-    </div>
+      <section class="products" id="productos">
+        <div class="section-title">
+          <h3>Catálogo</h3>
+          <div style="color:var(--muted);font-size:.95rem" id="count">0 productos</div>
+        </div>
+
+        <div class="grid" id="productGrid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div>🦝 Bulky Supps © 2025 - Energía. Fuerza. Actitud.</div>
+    </footer>
   </div>
-
-  <footer>
-    <p>🦝 Bulky Supps © 2025 - Energía. Fuerza. Actitud. 🦡</p>
-  </footer>
 
   <script>
     const productos = [
       // 🥤 BEBIDAS
-      {
-        categoria: "bebidas",
-        nombre: "AN ABE Energy Drink Blue Lagoon",
-        tipo: "Standard",
-        nivel: "Principiante",
-        precio: 65,
-        descripcion: "Bebida energética con cafeína natural, extracto de té verde y vitaminas B. Sabor Blue Lagoon refrescante con energía limpia.",
-        img: "https://cdn.shopify.com/s/files/1/0051/6810/3491/files/abe-energy-performance-rtd-energy-drinks-blue-lagoon-6-pack-31146887905347.jpg?v=1692747949"
-      },
-      {
-        categoria: "bebidas",
-        nombre: "RYSE Loaded Ring Pop Cherry",
-        tipo: "Premium",
-        nivel: "Intermedio",
-        precio: 75,
-        descripcion: "Bebida con electrolitos, taurina y BCAA’s. Mantiene el rendimiento y la hidratación en entrenamientos intensos.",
-        img: "https://tse2.mm.bing.net/th/id/OIP.C2CFQQ0FJsNmKV4dTqAWPwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
-      },
-      {
-        categoria: "bebidas",
-        nombre: "REDCON1 Total War Artic Berry",
-        tipo: "Hardcore",
-        nivel: "Avanzado",
-        precio: 75,
-        descripcion: "Energía lista para tomar con beta-alanina y cafeína. Ideal para atletas que buscan potencia sin mezclar.",
-        img: "https://www.northlandservice.com/wp-content/uploads/2024/08/TOTAL-WAR-ORANGE-CRUSH-PRE-WORK-OUT-12-OZ_12PACK.png"
-      },
-      {
-        categoria: "bebidas",
-        nombre: "Bucked Up Energy Drink Grape Gainz",
-        tipo: "Standard",
-        nivel: "Intermedio",
-        precio: 65,
-        descripcion: "Bebida sin azúcar con cafeína y vitaminas B12. Sabor uva intensa con energía duradera y sin crash.",
-        img: "https://i5.walmartimages.com/asr/84c602d4-35f6-4c29-b36b-144070caa588.83780bc61cbb8637ba988c2702cd317e.jpeg"
-      },
+      { categoria: "bebidas", nombre: "AN ABE Energy Drink Blue Lagoon", tipo: "Standard", nivel: "Principiante", precio: 65, descripcion: "Bebida energética con cafeína natural, extracto de té verde y vitaminas B. Sabor Blue Lagoon refrescante con energía limpia.", img: "https://cdn.shopify.com/s/files/1/0051/6810/3491/files/abe-energy-performance-rtd-energy-drinks-blue-lagoon-6-pack-31146887905347.jpg?v=1692747949" },
+      { categoria: "bebidas", nombre: "RYSE Loaded Ring Pop Cherry", tipo: "Premium", nivel: "Intermedio", precio: 75, descripcion: "Bebida con electrolitos, taurina y BCAA's. Mantiene el rendimiento y la hidratación en entrenamientos intensos.", img: "https://tse2.mm.bing.net/th/id/OIP.C2CFQQ0FJsNmKV4dTqAWPwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
+      { categoria: "bebidas", nombre: "REDCON1 Total War Orange Crush", tipo: "Hardcore", nivel: "Avanzado", precio: 75, descripcion: "Energía lista para tomar con beta-alanina y cafeína. Ideal para atletas que buscan potencia sin mezclar.", img: "https://m.media-amazon.com/images/I/61BXyiT1YhL._SX679_.jpg" },
+      { categoria: "bebidas", nombre: "Bucked Up Energy Drink Grape Gainz", tipo: "Standard", nivel: "Intermedio", precio: 65, descripcion: "Bebida sin azúcar con cafeína y vitaminas B12. Sabor uva intensa con energía duradera y sin crash.", img: "https://i5.walmartimages.com/asr/84c602d4-35f6-4c29-b36b-144070caa588.83780bc61cbb8637ba988c2702cd317e.jpeg" },
 
       // ⚡ PREENTRENOS
-      {
-        categoria: "preentrenos",
-        nombre: "AN ABE Ultimate Pre-Work Red Hawaiian",
-        tipo: "Standard",
-        nivel: "Principiante",
-        precio: 650,
-        descripcion: "Fórmula equilibrada con citrulina, beta-alanina y cafeína. Aumenta la resistencia y enfoque sin sobreestimular.",
-        img: "https://size.siteimgs.com/fit/450x450/10017/item/abe-ultimate-pre-workout_1679343310-0.jpg"
-      },
-      {
-        categoria: "preentrenos",
-        nombre: "Bucked Up Mother Bucker Muscle Head Mango",
-        tipo: "Hardcore",
-        nivel: "Avanzado",
-        precio: 800,
-        descripcion: "Pre-entreno extremo con 400mg de cafeína, betaína y theobromina. Energía explosiva y fuerza sin límites.",
-        img: "https://siteimgs.com/10017/item/7971-mb-muscleheadmango-2_1684423086-0.jpg"
-      },
-      {
-        categoria: "preentrenos",
-        nombre: "Ghost Legend All Out Warhead Green Apple",
-        tipo: "Premium",
-        nivel: "Intermedio",
-        precio: 850,
-        descripcion: "Pre-entreno premium con L-Citrulina y Alpha-GPC. Mejora el bombeo y el enfoque mental.",
-        img: "https://tse3.mm.bing.net/th/id/OIP.YKu4IJynievrLF61BDf4cwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
-      },
-      {
-        categoria: "preentrenos",
-        nombre: "GN Super Pump Agresion Italian Ice",
-        tipo: "Standard",
-        nivel: "Principiante",
-        precio: 650,
-        descripcion: "Versión moderna del clásico SuperPump. Promueve congestión muscular, energía y rendimiento.",
-        img: "https://www.netnutri.com/media/catalog/product/cache/17/image/650x/d9c70597da8a9cb2926ef4bca3f81833/j/e/jersey_mobster_italian_ice.jpg"
-      },
-      {
-        categoria: "preentrenos",
-        nombre: "Pandamic Extreme Raspberry Lemonade",
-        tipo: "Hardcore",
-        nivel: "Avanzado",
-        precio: 750,
-        descripcion: "Fórmula agresiva con citrulina, beta-alanina y yohimbina. Energía intensa y sabor potente.",
-        img: "https://tse4.mm.bing.net/th/id/OIP.U6MZRXsG_RieqZRekNiqBwHaJs?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
-      },
-      {
-        categoria: "preentrenos",
-        nombre: "Pandamus Level III Green Apple Bubblegum",
-        tipo: "Premium",
-        nivel: "Avanzado",
-        precio: 950,
-        descripcion: "Pre-entreno de triple potencia con enfoque, fuerza y vascularidad extremos. Sabor manzana verde con chicle.",
-        img: "https://th.bing.com/th/id/R.a4517399e159648093c0a2ac5183b86c?rik=Z96cNFxFRytr5g&riu=http%3a%2f%2fkongfitnessmx.com%2fcdn%2fshop%2ffiles%2f8EA5544D-EEC5-4AB4-B108-4AEEAC2866CE.png%3fv%3d1741236949"
-      },
-      {
-        categoria: "preentrenos",
-        nombre: "RYSE Loaded Jell-O Island Pineapple",
-        tipo: "Premium",
-        nivel: "Intermedio",
-        precio: 730,
-        descripcion: "300 mg de cafeína y 4 g de citrulina para energía constante. Ideal para entrenamientos diarios.",
-        img: "https://www.stack3d.com/wp-content/uploads/2024/09/ryse-jell-o-lemon-lime-and-pineapple-loaded-pre.jpg"
-      },
-
-      // 🍫 PROTEÍNAS
-      {
-        categoria: "proteinas",
-        nombre: "RYSE Loaded Protein Cinnamon Toast",
-        tipo: "Premium",
-        nivel: "Principiante",
-        precio: 950,
-        descripcion: "Proteína de suero aislada con enzimas digestivas. 25g por porción, ideal para recuperación y ganancia muscular.",
-        img: "https://cdn.shopify.com/s/files/1/0550/4107/0941/products/ryse-protein.png?v=1675344356"
-      }
+      { categoria: "preentrenos", nombre: "AN ABE Ultimate Pre-Work Red Hawaiian", tipo: "Standard", nivel: "Principiante", precio: 650, descripcion: "Fórmula equilibrada con citrulina, beta-alanina y cafeína. Aumenta la resistencia y enfoque sin sobreestimular.", img: "https://size.siteimgs.com/fit/450x450/10017/item/abe-ultimate-pre-workout_1679343310-0.jpg" },
+      { categoria: "preentrenos", nombre: "Bucked Up Mother Bucker Muscle Head Mango", tipo: "Hardcore", nivel: "Avanzado", precio: 800, descripcion: "Pre-entreno extremo con 400mg de cafeína, betaína y theobromina. Energía explosiva y fuerza sin límites.", img: "https://siteimgs.com/10017/item/7971-mb-muscleheadmango-2_1684423086-0.jpg" },
+      { categoria: "preentrenos", nombre: "Ghost Legend All Out Warhead Green Apple", tipo: "Premium", nivel: "Intermedio", precio: 850, descripcion: "Pre-entreno premium con L-Citrulina y Alpha-GPC. Mejora el bombeo y el enfoque mental.", img: "https://tse3.mm.bing.net/th/id/OIP.YKu4IJynievrLF61BDf4cwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
+      { categoria: "preentrenos", nombre: "GN Super Pump Agresion Italian Ice", tipo: "Standard", nivel: "Principiante", precio: 650, descripcion: "Versión moderna del clásico SuperPump. Promueve congestión muscular, energía y rendimiento.", img: "https://www.netnutri.com/media/catalog/product/cache/17/image/650x/d9c70597da8a9cb2926ef4bca3f81833/j/e/jersey_mobster_italian_ice.jpg" },
+      { categoria: "preentrenos", nombre: "Pandamic Extreme Raspberry Lemonade", tipo: "Hardcore", nivel: "Avanzado", precio: 750, descripcion: "Fórmula agresiva con citrulina, beta-alanina y yohimbina. Energía intensa y sabor potente.", img: "https://tse4.mm.bing.net/th/id/OIP.U6MZRXsG_RieqZRekNiqBwHaJs?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
+      { categoria: "preentrenos", nombre: "Pandamus Level III Green Apple Bubblegum", tipo: "Premium", nivel: "Avanzado", precio: 950, descripcion: "Pre-entreno de triple potencia con enfoque, fuerza y vascularidad extremos. Sabor manzana verde con chicle.", img: "https://costplus-nutrition.com/cdn/shop/files/20240712-174126_600x.jpg?v=1720826577" },
+      { categoria: "preentrenos", nombre: "RYSE Loaded Jell-O Island Pineapple", tipo: "Premium", nivel: "Intermedio", precio: 730, descripcion: "300 mg de cafeína y 4 g de citrulina para energía constante. Ideal para entrenamientos diarios.", img: "https://www.stack3d.com/wp-content/uploads/2024/09/ryse-jell-o-lemon-lime-and-pineapple-loaded-pre.jpg" }
     ];
 
-    function renderProducts() {
-      const categorias = ["bebidas", "preentrenos", "proteinas"];
-      categorias.forEach(cat => {
-        const grid = document.getElementById(`${cat}Grid`);
-        productos
-          .filter(p => p.categoria === cat)
-          .forEach(p => {
-            const card = document.createElement("div");
-            card.className = "product-card";
-            card.innerHTML = `
-              <img src="${p.img}" alt="${p.nombre}" style="width:100%; border-radius:10px; margin-bottom:1rem;">
-              <div class="product-name">${p.nombre}</div>
-              <span class="product-type">${p.tipo}</span>
-              <span class="product-level">Nivel: ${p.nivel}</span>
-              <div class="product-description">${p.descripcion}</div>
-              <div class="product-stock">
-                <span class="stock-label">Precio por pieza:</span>
-                <span class="stock-number">$${p.precio} MXN</span>
-              </div>
-            `;
-            grid.appendChild(card);
-          });
-      });
+    function createCard(p){
+      const el = document.createElement('article');
+      el.className = 'card';
+      el.innerHTML = `
+        <img class="thumb" src="${p.img}" alt="Imagen de ${p.nombre}">
+        <div class="meta">
+          <div class="title">${p.nombre}</div>
+          <div class="price">$${p.precio}</div>
+        </div>
+        <div class="badges">
+          <span class="badge">${p.tipo}</span>
+          <span class="badge">Nivel: ${p.nivel}</span>
+        </div>
+        <p class="desc">${p.descripcion}</p>
+      `;
+      return el;
     }
-    renderProducts();
+
+    const state = {query:'',level:'',tipo:'',categoria:''};
+
+    function populateTipoOptions(){
+      const tipos = Array.from(new Set(productos.map(p=>p.tipo))).sort();
+      const sel = document.getElementById('filterTipo');
+      tipos.forEach(t=>{ const o = document.createElement('option'); o.value=t; o.textContent = t; sel.appendChild(o); });
+    }
+
+    function render(){
+      const grid = document.getElementById('productGrid'); 
+      grid.innerHTML = '';
+      const q = state.query.trim().toLowerCase();
+      
+      const results = productos.filter(p=>{
+        if(state.categoria && p.categoria !== state.categoria) return false;
+        if(state.level && p.nivel !== state.level) return false;
+        if(state.tipo && p.tipo !== state.tipo) return false;
+        if(!q) return true;
+        return (p.nombre + ' ' + p.descripcion).toLowerCase().includes(q);
+      });
+      
+      document.getElementById('count').textContent = `${results.length} productos`;
+      
+      if(results.length === 0){
+        const empty = document.createElement('div');
+        empty.className = 'empty';
+        empty.textContent = 'No encontramos productos. Intenta ajustar los filtros.';
+        grid.appendChild(empty);
+        return;
+      }
+      
+      results.forEach(r=> grid.appendChild(createCard(r)));
+    }
+
+    document.getElementById('search').addEventListener('input', e=>{ state.query = e.target.value; state.categoria=''; render(); });
+    document.getElementById('filterLevel').addEventListener('change', e=>{ state.level = e.target.value; render(); });
+    document.getElementById('filterTipo').addEventListener('change', e=>{ state.tipo = e.target.value; render(); });
+    
+    // Botones de categoría con feedback visual
+    document.querySelectorAll('.cat-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.cat-btn').forEach(b=> b.classList.remove('filter-active'));
+        btn.classList.add('filter-active');
+        
+        state.categoria = btn.dataset.cat;
+        state.query = '';
+        state.level = '';
+        state.tipo = '';
+        document.getElementById('search').value = '';
+        document.getElementById('filterLevel').value = '';
+        document.getElementById('filterTipo').value = '';
+        render();
+      });
+    });
+
+    document.getElementById('contactBtn').addEventListener('click', () => {
+      const message = `Contacto: 7226205305\nInstagram: https://www.instagram.com/bulkysupps.mx?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==`;
+      alert(message);
+    });
+
+    populateTipoOptions(); 
+    render();
   </script>
 </body>
 </html>
