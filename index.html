@@ -47,6 +47,8 @@
     .hero-inner{flex:1}
     .hero h2{font-size:1.6rem;margin:0 0 .25rem}
     .hero p{color:var(--muted);margin:0 0 .5rem}
+    /* Show the full hero image (no cropping) */
+    .hero-image{width:100%;max-width:320px;border-radius:12px;height:auto;box-shadow:0 8px 30px rgba(0,0,0,0.6);display:block}
 
     /* UX: Estado activo en botones de categoría */
     .filter-active{
@@ -85,7 +87,9 @@
     }
 
     .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(139,0,0,0.15)}
-    .thumb{width:100%;height:140px;border-radius:8px;object-fit:cover;background:#111}
+    /* Thumbnails: responsive cards that preserve cover behavior */
+    /* Thumbnails: show full image (no cropping) */
+    .thumb{width:100%;height:auto;border-radius:8px;display:block;background:#111}
     .meta{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
     .title{font-weight:800;font-size:0.95rem}
     .price{color:var(--accent);font-weight:800}
@@ -141,9 +145,9 @@
             <button class="btn cat-btn" data-cat="proteinas">Proteínas</button>
           </div>
         </div>
-        <div style="min-width:220px;display:flex;align-items:center;justify-content:center">
-          <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=800&auto=format&fit=crop" alt="Atleta levantando pesas" style="width:220px;border-radius:12px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,0.6)">
-        </div>
+          <div style="min-width:220px;display:flex;align-items:center;justify-content:center">
+            <img class="hero-image" src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=800&auto=format&fit=crop" alt="Atleta levantando pesas" loading="lazy" decoding="async">
+          </div>
       </section>
 
       <div class="controls" role="region" aria-label="Filtros de productos">
@@ -183,20 +187,20 @@
       { categoria: "bebidas", nombre: "Bucked Up Energy Drink Grape Gainz", tipo: "Standard", nivel: "Intermedio", precio: 65, descripcion: "Bebida sin azúcar con cafeína y vitaminas B12. Sabor uva intensa con energía duradera y sin crash.", img: "https://i5.walmartimages.com/asr/84c602d4-35f6-4c29-b36b-144070caa588.83780bc61cbb8637ba988c2702cd317e.jpeg" },
 
       // ⚡ PREENTRENOS
-      { categoria: "preentrenos", nombre: "AN ABE Ultimate Pre-Work Red Hawaiian", tipo: "Standard", nivel: "Principiante", precio: 650, descripcion: "Fórmula equilibrada con citrulina, beta-alanina y cafeína. Aumenta la resistencia y enfoque sin sobreestimular.", img: "https://size.siteimgs.com/fit/450x450/10017/item/abe-ultimate-pre-workout_1679343310-0.jpg" },
-      { categoria: "preentrenos", nombre: "Bucked Up Mother Bucker Muscle Head Mango", tipo: "Hardcore", nivel: "Avanzado", precio: 800, descripcion: "Pre-entreno extremo con 400mg de cafeína, betaína y theobromina. Energía explosiva y fuerza sin límites.", img: "https://siteimgs.com/10017/item/7971-mb-muscleheadmango-2_1684423086-0.jpg" },
-      { categoria: "preentrenos", nombre: "Ghost Legend All Out Warhead Green Apple", tipo: "Premium", nivel: "Intermedio", precio: 850, descripcion: "Pre-entreno premium con L-Citrulina y Alpha-GPC. Mejora el bombeo y el enfoque mental.", img: "https://tse3.mm.bing.net/th/id/OIP.YKu4IJynievrLF61BDf4cwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
-      { categoria: "preentrenos", nombre: "GN Super Pump Agresion Italian Ice", tipo: "Standard", nivel: "Principiante", precio: 650, descripcion: "Versión moderna del clásico SuperPump. Promueve congestión muscular, energía y rendimiento.", img: "https://www.netnutri.com/media/catalog/product/cache/17/image/650x/d9c70597da8a9cb2926ef4bca3f81833/j/e/jersey_mobster_italian_ice.jpg" },
-      { categoria: "preentrenos", nombre: "Pandamic Extreme Raspberry Lemonade", tipo: "Hardcore", nivel: "Avanzado", precio: 750, descripcion: "Fórmula agresiva con citrulina, beta-alanina y yohimbina. Energía intensa y sabor potente.", img: "https://tse4.mm.bing.net/th/id/OIP.U6MZRXsG_RieqZRekNiqBwHaJs?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
-      { categoria: "preentrenos", nombre: "Pandamus Level III Green Apple Bubblegum", tipo: "Premium", nivel: "Avanzado", precio: 950, descripcion: "Pre-entreno de triple potencia con enfoque, fuerza y vascularidad extremos. Sabor manzana verde con chicle.", img: "https://costplus-nutrition.com/cdn/shop/files/20240712-174126_600x.jpg?v=1720826577" },
-      { categoria: "preentrenos", nombre: "RYSE Loaded Jell-O Island Pineapple", tipo: "Premium", nivel: "Intermedio", precio: 730, descripcion: "300 mg de cafeína y 4 g de citrulina para energía constante. Ideal para entrenamientos diarios.", img: "https://http2.mlstatic.com/D_NQ_NP_734819-MLM80172626451_102024-O.webp" }
+      { categoria: "preentrenos", nombre: "AN ABE Ultimate Pre-Work Red Hawaiian", tipo: "Standard", nivel: "Principiante", precio: 650, descripcion: "Fórmula equilibrada con citrulina, beta-alanina y cafeína. Aumenta la resistencia y enfoque sin sobreestimular.", img: "images/PREWORKOUT/ABE.jpg" },
+      { categoria: "preentrenos", nombre: "Bucked Up Mother Bucker Muscle Head Mango", tipo: "Hardcore", nivel: "Avanzado", precio: 800, descripcion: "Pre-entreno extremo con 400mg de cafeína, betaína y theobromina. Energía explosiva y fuerza sin límites.", img: "images/PREWORKOUT/MOTHER_BUCKER.jpg" },
+      { categoria: "preentrenos", nombre: "Ghost Legend All Out Warhead Green Apple", tipo: "Premium", nivel: "Intermedio", precio: 850, descripcion: "Pre-entreno premium con L-Citrulina y Alpha-GPC. Mejora el bombeo y el enfoque mental.", img: "images/PREWORKOUT/GHOST.jpg" },
+      { categoria: "preentrenos", nombre: "GN Super Pump Agresion Italian Ice", tipo: "Standard", nivel: "Principiante", precio: 650, descripcion: "Versión moderna del clásico SuperPump. Promueve congestión muscular, energía y rendimiento.", img: "images/PREWORKOUT/SUPER_PUMP.jpg" },
+      { categoria: "preentrenos", nombre: "Pandamic Extreme Raspberry Lemonade", tipo: "Hardcore", nivel: "Avanzado", precio: 750, descripcion: "Fórmula agresiva con citrulina, beta-alanina y yohimbina. Energía intensa y sabor potente.", img: "images/PREWORKOUT/PANDAMIC.jpg" },
+      { categoria: "preentrenos", nombre: "Pandamus Level III Green Apple Bubblegum", tipo: "Premium", nivel: "Avanzado", precio: 950, descripcion: "Pre-entreno de triple potencia con enfoque, fuerza y vascularidad extremos. Sabor manzana verde con chicle.", img: "images/PREWORKOUT/PANDAMUS.jpg" },
+      { categoria: "preentrenos", nombre: "RYSE Loaded Jell-O Island Pineapple", tipo: "Premium", nivel: "Intermedio", precio: 730, descripcion: "300 mg de cafeína y 4 g de citrulina para energía constante. Ideal para entrenamientos diarios.", img: "images/PREWORKOUT/RYSE.jpg" }
     ];
 
     function createCard(p){
       const el = document.createElement('article');
       el.className = 'card';
       el.innerHTML = `
-        <img class="thumb" src="${p.img}" alt="Imagen de ${p.nombre}">
+        <img class="thumb" src="${p.img}" alt="Imagen de ${p.nombre}" loading="lazy" decoding="async">
         <div class="meta">
           <div class="title">${p.nombre}</div>
           <div class="price">$${p.precio}</div>
